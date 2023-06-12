@@ -51,114 +51,199 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Page"
-                               Grid.Column="0"
-                               Grid.Row="0"/>
-        <TextBox Grid.Column="1"
-                               Grid.Row="0"/>
+        <TabControl Grid.Column="0"
+                    Grid.Row="0"
+                    Grid.ColumnSpan="6"
+                    Grid.RowSpan="6">
+            <TabItem Header="Parameters">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
 
-        <TextBlock Text="PageSize"
-                               Grid.Column="2"
-                               Grid.Row="0"/>
-        <TextBox Grid.Column="3"
-                               Grid.Row="0"/>
+                    <TextBlock Text="Page"
+                 Grid.Column="0"
+                 Grid.Row="0"/>
+                    <TextBox Grid.Column="1"
+                 Grid.Row="0"
+                 Text="{Binding Path=Page, Mode=TwoWay}"/>
 
-        <TextBlock Text="FromDate"
-                               Grid.Column="4"
-                               Grid.Row="0"/>
-        <DatePicker Grid.Column="5"
-                               Grid.Row="0"/>
+                    <TextBlock Text="PageSize"
+                 Grid.Column="2"
+                 Grid.Row="0"/>
+                    <TextBox Grid.Column="3"
+                 Grid.Row="0"
+                 Text="{Binding Path=PageSize, Mode=TwoWay}"/>
 
-        <TextBlock Text="ToDate"
-                               Grid.Column="0"
-                               Grid.Row="1"/>
-        <DatePicker Grid.Column="1"
-                               Grid.Row="1"/>
+                    <TextBlock Text="FromDate"
+                    Grid.Column="4"
+                    Grid.Row="0"/>
+                    <DatePicker Grid.Column="5"
+                    Grid.Row="0"
+                    SelectedDate="{Binding Path=FromDate, Mode=TwoWay}"/>
 
-        <TextBlock Text="Order"
-                               Grid.Column="2"
-                               Grid.Row="1"/>   
-        <ComboBox Grid.Column="3"
-                               Grid.Row="1">
-            <ComboBoxItem Content="desc"/>
+                    <TextBlock Text="ToDate"
+                    Grid.Column="0"
+                    Grid.Row="1"/>
+                    <DatePicker Grid.Column="1"
+                    Grid.Row="1"
+                    SelectedDate="{Binding Path=ToDate, Mode=TwoWay}"/>
 
-            <ComboBoxItem Content="asc"/>
-        </ComboBox>
+                    <TextBlock Text="Order"
+                    Grid.Column="2"
+                    Grid.Row="1"/>
+                    <ComboBox Grid.Column="3"
+                  Grid.Row="1"
+                  Text="{Binding Path=Order, Mode=TwoWay}">
+                        <ComboBoxItem Content="desc"/>
+                        <ComboBoxItem Content="asc"/>
+                    </ComboBox>
 
-        <TextBlock Text="Min"
-                               Grid.Column="4"
-                               Grid.Row="1"/>
-        <DatePicker Grid.Column="5"
-                               Grid.Row="1"/>
+                    <TextBlock Text="Min"
+                    Grid.Column="4"
+                    Grid.Row="1"/>
+                    <DatePicker Grid.Column="5"
+                    Grid.Row="1"
+                    SelectedDate="{Binding Path=Min, Mode=TwoWay}"/>
 
-        <TextBlock Text="Max"
-                               Grid.Column="0"
-                               Grid.Row="2"/>
-        <DatePicker Grid.Column="1"
-                               Grid.Row="2"/>
+                    <TextBlock Text="Max"
+                    Grid.Column="0"
+                    Grid.Row="2"/>
+                    <DatePicker Grid.Column="1"
+                    Grid.Row="2"
+                    SelectedDate="{Binding Path=Max, Mode=TwoWay}"/>
 
-        <TextBlock Text="Sort"
-                               Grid.Column="2"
-                               Grid.Row="2"/>
-        <ComboBox Grid.Column="3"
-                    Grid.Row="2">
-            <ComboBoxItem Content="activity"/>
-            <ComboBoxItem Content="votes"/>
-            <ComboBoxItem Content="creation"/>
-            <ComboBoxItem Content="relevance"/>
-        </ComboBox>
+                    <TextBlock Text="Sort"
+                    Grid.Column="2"
+                    Grid.Row="2"/>
+                    <ComboBox Grid.Column="3"
+                    Grid.Row="2"
+                    Text="{Binding Path=Sort, Mode=TwoWay}">
+                        <ComboBoxItem Content="activity"/>
+                        <ComboBoxItem Content="votes"/>
+                        <ComboBoxItem Content="creation"/>
+                        <ComboBoxItem Content="relevance"/>
+                    </ComboBox>
 
-        <TextBlock Text="Tagged"
-                               Grid.Column="4"
-                               Grid.Row="2"/>
-        <TextBox Grid.Column="5"
-                               Grid.Row="2"/>
+                    <TextBlock Text="Tagged"
+                    Grid.Column="4"
+                    Grid.Row="2"/>
+                    <TextBox Grid.Column="5"
+                    Grid.Row="2"
+                    Text="{Binding Path=Tagged, Mode=TwoWay}"/>
 
-        <TextBlock Text="NotTagged"
-                               Grid.Column="0"
-                               Grid.Row="3"/>
-        <TextBox Grid.Column="1"
-                               Grid.Row="3"/>
+                    <TextBlock Text="NotTagged"
+                    Grid.Column="0"
+                    Grid.Row="3"/>
+                    <TextBox Grid.Column="1"
+                    Grid.Row="3"
+                    Text="{Binding Path=NotTagged, Mode=TwoWay}"/>
 
-        <TextBlock Text="InTitle"
-                               Grid.Column="2"
-                               Grid.Row="3"/>
-        <TextBox Grid.Column="3"
-                               Grid.Row="3"/>
+                    <TextBlock Text="InTitle"
+                    Grid.Column="2"
+                    Grid.Row="3"/>
+                    <TextBox Grid.Column="3"
+                    Grid.Row="3"
+                    Text="{Binding Path=InTitle, Mode=TwoWay}"/>
 
-        <TextBox Grid.Row="4"
-                             Grid.Column="0"
-                             Grid.ColumnSpan="5"/>
+                    <TextBlock Text="Site"
+                    Grid.Column="4"
+                    Grid.Row="3"/>
+                    <TextBox Grid.Column="5"
+                    Grid.Row="3"
+                    IsEnabled="False"
+                    Text="{Binding Path=Site, Mode=TwoWay}"/>
 
-        <Button Content="Run"
-                            Grid.Row="4"
-                            Grid.Column="5"
-                Command="{Binding Path=Run, Mode=OneWay}"/>
+                    <TextBox Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    IsEnabled="False"
+                    Text="{Binding Path=RequestStringParametersTab, Mode=TwoWay}"/>
+
+                    <Button Content="Run"
+                    Grid.Row="4"
+                    Grid.Column="5"
+                    Command="{Binding Path=RunParametersTab}"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="String">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    Grid.RowSpan="5"
+                    TextWrapping="Wrap"
+                    VerticalContentAlignment="Top"
+                    Text="{Binding Path=RequestStringStringTab, Mode=TwoWay}"/>
+
+                    <Button Content="Run"
+                    Grid.Row="0"
+                    Grid.Column="5"
+                    Command="{Binding Path=RunStringTab}"/>
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+       
 
         <ScrollViewer Grid.Column="0"
-                      Grid.Row="5"
+                      Grid.Row="6"
                       Grid.ColumnSpan="6">
             <TextBox TextWrapping="Wrap"
                      VerticalContentAlignment="Top"
-                     Text="{Binding Path=ResponseString, Mode=TwoWay}"/>
+                     Text="{Binding Path=ResponseString}"/>
         </ScrollViewer>
 
 
-        <TextBox Grid.Row="6"
-                               Grid.Column="0"
+        <TextBox Grid.Row="7"
+                     Grid.Column="0"
                      Grid.ColumnSpan="4"/>
 
         <Button Content="Save"
-                            Grid.Row="6"
-                            Grid.Column="4"/>
+                     Grid.Row="7"
+                     Grid.Column="4"
+                Command="{Binding Path=Save}"/>
 
         <Button Content="Clear"
-                            Grid.Row="6"
-                            Grid.Column="5"/>
+                     Grid.Row="7"
+                     Grid.Column="5"
+                Command="{Binding Path=Clear}"/>
 
     </Grid>
 

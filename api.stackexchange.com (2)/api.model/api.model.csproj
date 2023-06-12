@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="ApiBase.cs" />
     <Compile Include="Common\DecompressGZIP.cs" />
-    <Compile Include="Common\JsonSerializeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

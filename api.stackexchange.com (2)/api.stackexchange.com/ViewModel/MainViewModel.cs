@@ -22,9 +22,12 @@ namespace api.stackexchange.com.ViewModel
         private string tagged;
         private string notTagged;
         private string inTitle;
-        private string requestString;
+        private string site;
+        private string requestStringParametersTab;
+        private string requestStringStringTab;
         private string responseString;
-        private ICommand run;
+        private ICommand runParametersTab;
+        private ICommand runStringTab;
         private ICommand save;
         private ICommand clear;
 
@@ -38,29 +41,62 @@ namespace api.stackexchange.com.ViewModel
         public string Sort { get => sort;set=> Set(ref sort, value); }
         public string Tagged { get => tagged;set=> Set(ref tagged, value); }
         public string NotTagged { get => notTagged;set=> Set(ref notTagged, value); }
-        public string InTitle { get => inTitle;set=> Set(ref inTitle, value); }
-        public string RequestString { get => requestString; set => Set(ref requestString, value); }
+        public string InTitle { get => inTitle; set => Set(ref inTitle, value); }
+        public string Site { get => site; set => Set(ref site, value); }
+        public string RequestStringParametersTab { get => requestStringParametersTab; set => Set(ref requestStringParametersTab, value); }
+        public string RequestStringStringTab { get => requestStringStringTab; set => Set(ref requestStringStringTab, value); }
         public string ResponseString { get => responseString;set=> Set(ref responseString, value); }
-        public ICommand Run => run ?? (run = new AsyncRelayCommand(RunMethod));
+        public ICommand RunParametersTab => runParametersTab ?? (runParametersTab = new AsyncRelayCommand(RunMethodParametersTab));
+        public ICommand RunStringTab => runStringTab ?? (runStringTab = new AsyncRelayCommand(RunMethodStringTab));
         public ICommand Save => save ?? (save = new RelayCommand(SaveMethod));
         public ICommand Clear => clear ?? (clear = new RelayCommand(ClearMethod));
 
-        private async Task RunMethod(){
-            ApiBase api = new ApiBase("https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&site=stackoverflow");
-            ResponseString =await api.SendAsync();
+        private async Task RunMethodParametersTab(){
 
+            using (ApiBase api = new ApiBase("https://api.stackexchange.com/2.3/questions"))
+            {
+                api.AddParameter("page", page.ToString());
+                api.AddParameter("pageSize", pageSize.ToString());
+                api.AddParameter("fromDate", fromDate);
+                api.AddParameter("toDate", toDate);
+                api.AddParameter("order", order);
+                api.AddParameter("min", min);
+                api.AddParameter("max", max);
+                api.AddParameter("sort", sort);
+                api.AddParameter("tagged", tagged);
+                api.AddParameter("notTagged", notTagged);
+                api.AddParameter("inTitle", inTitle);
+                api.AddParameter("site", site);
+
+                RequestStringParametersTab = api.Parameters;
+                ResponseString = await api.SendAsync();
+            }
+        }
+
+        private async Task RunMethodStringTab()
+        {
+            using (ApiBase api = new ApiBase(RequestStringStringTab))
+            {
+                ResponseString = await api.SendAsync();
+            }
         }
 
         private void SaveMethod() { 
         
         }
-        private void ClearMethod() { 
-        
+        private void ClearMethod() {
+            ResponseString = string.Empty;
         }
 
 
         public MainViewModel()
         {
+            Site = "stackoverflow";
+            FromDate = DateTime.Now;
+            ToDate = DateTime.Now;
+            Min = DateTime.Now;
+            Max = DateTime.Now;
+            RequestStringStringTab= "https://api.stackexchange.com/2.3/search?order=desc&sort=activity&intitle=beautiful&site=stackoverflow";
         }
     }
 }
