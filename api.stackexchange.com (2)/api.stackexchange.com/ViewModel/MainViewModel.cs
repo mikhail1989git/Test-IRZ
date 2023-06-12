@@ -7,6 +7,7 @@ using System.Windows.Input;
 using api.model;
 using api.stackexchange.com.Common;
 using System.Threading.Tasks;
+using Service;
 
 namespace api.stackexchange.com.ViewModel
 {    public class MainViewModel : ViewModelBase
@@ -48,7 +49,7 @@ namespace api.stackexchange.com.ViewModel
         public string ResponseString { get => responseString;set=> Set(ref responseString, value); }
         public ICommand RunParametersTab => runParametersTab ?? (runParametersTab = new AsyncRelayCommand(RunMethodParametersTab));
         public ICommand RunStringTab => runStringTab ?? (runStringTab = new AsyncRelayCommand(RunMethodStringTab));
-        public ICommand Save => save ?? (save = new RelayCommand(SaveMethod));
+        public ICommand Save => save ?? (save = new AsyncRelayCommand(SaveMethod));
         public ICommand Clear => clear ?? (clear = new RelayCommand(ClearMethod));
 
         private async Task RunMethodParametersTab(){
@@ -81,13 +82,15 @@ namespace api.stackexchange.com.ViewModel
             }
         }
 
-        private void SaveMethod() { 
-        
+        private async Task SaveMethod() {
+
+            await SaveToFile.SaveFileAsync(ResponseString);
+
         }
+
         private void ClearMethod() {
             ResponseString = string.Empty;
         }
-
 
         public MainViewModel()
         {

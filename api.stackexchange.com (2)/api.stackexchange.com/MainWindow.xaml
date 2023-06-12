@@ -220,7 +220,7 @@
 
             </TabItem>
         </TabControl>
-       
+
 
         <ScrollViewer Grid.Column="0"
                       Grid.Row="6"
@@ -229,11 +229,6 @@
                      VerticalContentAlignment="Top"
                      Text="{Binding Path=ResponseString}"/>
         </ScrollViewer>
-
-
-        <TextBox Grid.Row="7"
-                     Grid.Column="0"
-                     Grid.ColumnSpan="4"/>
 
         <Button Content="Save"
                      Grid.Row="7"
