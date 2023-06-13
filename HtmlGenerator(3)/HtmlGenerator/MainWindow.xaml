@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HtmlGenerator"
         mc:Ignorable="d"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Open"
+                      Command="{Binding Path=Open, Mode=OneWay}"/>
+            <MenuItem Header="Save"
+                      Command="{Binding Path=Save, Mode=OneWay}"/>
+        </Menu>
+
+        <ScrollViewer Grid.Row="1">
+        <TextBox TextWrapping="Wrap"
+                 Text="{Binding Path=Result, Mode=TwoWay}"/>
+        </ScrollViewer>
     </Grid>
+
+
 </Window>

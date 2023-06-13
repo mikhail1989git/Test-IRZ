@@ -1,34 +1,40 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System.Windows.Input;
+using Services.Common;
+using System.Threading.Tasks;
+using HtmlGenerator.Common;
+using System;
+using Newtonsoft.Json;
+using System.Text;
+using Services;
 
 namespace HtmlGenerator.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
+        private string result;
+        ICommand open;
+        ICommand save;
+
+        public string Result { get => result; set => Set(ref result, value); }
+        public ICommand Open => open ?? (open = new AsyncRelayCommand(OpenMethod));
+        public ICommand Save => save ?? (save = new AsyncRelayCommand(SaveMethod));
+
+
+        private async Task OpenMethod(){
+
+            var generator = new ObjectToHtmlGenerator();
+
+            Result = await generator.Generate(await ReadFile.ReadAsync().ConfigureAwait(false));
+        }
+
+        private async Task SaveMethod() { 
+            await SaveToFile.SaveFileAsync(Result).ConfigureAwait(false);
+        }
+
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
         }
     }
 }
