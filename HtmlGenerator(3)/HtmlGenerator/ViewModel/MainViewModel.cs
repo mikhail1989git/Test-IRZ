@@ -1,13 +1,9 @@
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using System.Windows.Input;
+using HtmlGenerator.Common;
+using Services;
 using Services.Common;
 using System.Threading.Tasks;
-using HtmlGenerator.Common;
-using System;
-using Newtonsoft.Json;
-using System.Text;
-using Services;
+using System.Windows.Input;
 
 namespace HtmlGenerator.ViewModel
 {

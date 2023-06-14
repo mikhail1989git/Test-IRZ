@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Domain.SubClasses
 {
-    internal class Owner
+    public class Owner
     {
-        public string account_id;
-        public string reputation;
-        public string user_id;
+        public int account_id;
+        public int reputation;
+        public int user_id;
         public string user_type;
-        public string registered;
         public string profile_image;
         public string display_name;
         public string link;
