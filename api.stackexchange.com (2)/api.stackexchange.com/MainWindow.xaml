@@ -24,11 +24,6 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
 
-        <Style TargetType="DatePicker">
-            <Setter Property="Margin" Value="2"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-
         <Style TargetType="ComboBox">
             <Setter Property="Margin" Value="2"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -84,28 +79,28 @@
                  Grid.Row="0"/>
                     <TextBox Grid.Column="1"
                  Grid.Row="0"
-                 Text="{Binding Path=Page, Mode=TwoWay}"/>
+                    Text="{Binding Path=Page, Mode=TwoWay}"/>
 
                     <TextBlock Text="PageSize"
                  Grid.Column="2"
                  Grid.Row="0"/>
                     <TextBox Grid.Column="3"
-                 Grid.Row="0"
-                 Text="{Binding Path=PageSize, Mode=TwoWay}"/>
+                        Grid.Row="0"
+                        Text="{Binding Path=PageSize, Mode=TwoWay}"/>
 
                     <TextBlock Text="FromDate"
                     Grid.Column="4"
                     Grid.Row="0"/>
-                    <DatePicker Grid.Column="5"
+                    <TextBox Grid.Column="5"
                     Grid.Row="0"
-                    SelectedDate="{Binding Path=FromDate, Mode=TwoWay}"/>
+                             Text="{Binding Path=FromDate, Mode=TwoWay}"/>
 
                     <TextBlock Text="ToDate"
                     Grid.Column="0"
                     Grid.Row="1"/>
-                    <DatePicker Grid.Column="1"
+                    <TextBox Grid.Column="1"
                     Grid.Row="1"
-                    SelectedDate="{Binding Path=ToDate, Mode=TwoWay}"/>
+                             Text="{Binding Path=ToDate, Mode=TwoWay}"/>
 
                     <TextBlock Text="Order"
                     Grid.Column="2"
@@ -120,16 +115,16 @@
                     <TextBlock Text="Min"
                     Grid.Column="4"
                     Grid.Row="1"/>
-                    <DatePicker Grid.Column="5"
+                    <TextBox Grid.Column="5"
                     Grid.Row="1"
-                    SelectedDate="{Binding Path=Min, Mode=TwoWay}"/>
+                             Text="{Binding Path=Min}"/>
 
                     <TextBlock Text="Max"
                     Grid.Column="0"
                     Grid.Row="2"/>
-                    <DatePicker Grid.Column="1"
+                    <TextBox Grid.Column="1"
                     Grid.Row="2"
-                    SelectedDate="{Binding Path=Max, Mode=TwoWay}"/>
+                             Text="{Binding Path=Max}"/>
 
                     <TextBlock Text="Sort"
                     Grid.Column="2"

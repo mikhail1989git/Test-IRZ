@@ -8,17 +8,18 @@ using api.model;
 using api.stackexchange.com.Common;
 using System.Threading.Tasks;
 using Service;
+using System.Windows.Media.Converters;
 
 namespace api.stackexchange.com.ViewModel
 {    public class MainViewModel : ViewModelBase
     {
-        private int page;
-        private int pageSize;
-        private DateTime fromDate;
-        private DateTime toDate;
+        private string page;
+        private string pageSize;
+        private string fromDate;
+        private string toDate;
         private string order;
-        private DateTime min;
-        private DateTime max;
+        private string min;
+        private string max;
         private string sort;
         private string tagged;
         private string notTagged;
@@ -32,13 +33,13 @@ namespace api.stackexchange.com.ViewModel
         private ICommand save;
         private ICommand clear;
 
-        public int Page { get => page; set => Set(ref page, value); }
-        public int PageSize { get => pageSize; set => Set(ref pageSize, value); }
-        public DateTime FromDate { get => fromDate; set => Set(ref fromDate, value); }
-        public DateTime ToDate { get => toDate;set=> Set(ref toDate, value); }
+        public string Page { get => page; set => Set(ref page, value); }
+        public string PageSize { get => pageSize; set => Set(ref pageSize, value); }
+        public string FromDate { get => fromDate; set => Set(ref fromDate, value); }
+        public string ToDate { get => toDate;set=> Set(ref toDate, value); }
         public string Order { get => order;set=> Set(ref order, value); }
-        public DateTime Min { get => min;set=> Set(ref min, value); }
-        public DateTime Max { get => max;set=> Set(ref max, value); }
+        public string Min { get => min;set=> Set(ref min, value); }
+        public string Max { get => max;set=> Set(ref max, value); }
         public string Sort { get => sort;set=> Set(ref sort, value); }
         public string Tagged { get => tagged;set=> Set(ref tagged, value); }
         public string NotTagged { get => notTagged;set=> Set(ref notTagged, value); }
@@ -56,18 +57,9 @@ namespace api.stackexchange.com.ViewModel
 
             using (ApiBase api = new ApiBase("https://api.stackexchange.com/2.3/questions"))
             {
-                api.AddParameter("page", page.ToString());
-                api.AddParameter("pageSize", pageSize.ToString());
-                api.AddParameter("fromDate", fromDate);
-                api.AddParameter("toDate", toDate);
-                api.AddParameter("order", order);
-                api.AddParameter("min", min);
-                api.AddParameter("max", max);
-                api.AddParameter("sort", sort);
-                api.AddParameter("tagged", tagged);
-                api.AddParameter("notTagged", notTagged);
-                api.AddParameter("inTitle", inTitle);
-                api.AddParameter("site", site);
+                RequestEntity request = new RequestEntity(page,pageSize,fromDate,toDate,order,min,max,sort,tagged,notTagged,inTitle, site);
+
+                api.AddParameter(request);
 
                 RequestStringParametersTab = api.Parameters;
                 ResponseString = await api.SendAsync();
@@ -95,10 +87,6 @@ namespace api.stackexchange.com.ViewModel
         public MainViewModel()
         {
             Site = "stackoverflow";
-            FromDate = DateTime.Now;
-            ToDate = DateTime.Now;
-            Min = DateTime.Now;
-            Max = DateTime.Now;
             RequestStringStringTab= "https://api.stackexchange.com/2.3/search?order=desc&sort=activity&intitle=beautiful&site=stackoverflow";
         }
     }

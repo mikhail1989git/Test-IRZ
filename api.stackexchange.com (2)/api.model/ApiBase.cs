@@ -1,10 +1,8 @@
 ﻿using api.model.Common;
 using System;
-using System.Collections.Generic;
-using System.IO.Compression;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -84,6 +82,45 @@ namespace api.model
                 stringBuilder.Append(x);
 
             return stringBuilder.ToString();
+        }
+
+        public void AddParameter(RequestEntity request)
+        {
+            if (int.TryParse(request.page, out int pageResult))
+                this.AddParameter("page", request.page);
+
+            if (int.TryParse(request.pageSize, out int pageSizeResult))
+                this.AddParameter("pageSize", request.pageSize);
+
+            if (DateTime.TryParse(request.fromDate, out DateTime fromDateResult))
+                this.AddParameter("fromDate", fromDateResult);
+
+            if (DateTime.TryParse(request.toDate, out DateTime toDateResult))
+                this.AddParameter("toDate", toDateResult);
+
+            if(!string.IsNullOrWhiteSpace(request.order))
+                this.AddParameter("order", request.order);
+
+            if (DateTime.TryParse(request.min, out DateTime minResult))
+                this.AddParameter("min", minResult);
+
+            if (DateTime.TryParse(request.max, out DateTime maxResult))
+                this.AddParameter("max", maxResult);
+
+            if(!string.IsNullOrWhiteSpace(request.sort))
+            this.AddParameter("sort", request.sort);
+
+            if (!string.IsNullOrWhiteSpace(request.tagged))
+                this.AddParameter("tagged", request.tagged);
+
+            if (!string.IsNullOrWhiteSpace(request.notTagged))
+                this.AddParameter("notTagged", request.notTagged);
+
+            if (!string.IsNullOrWhiteSpace(request.inTitle))
+                this.AddParameter("inTitle", request.inTitle);
+
+            if (!string.IsNullOrWhiteSpace(request.site))
+                this.AddParameter("site", request.site);
         }
 
         public void Dispose()
