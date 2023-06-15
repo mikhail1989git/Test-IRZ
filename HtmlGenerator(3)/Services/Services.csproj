@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DateConverter.cs" />
     <Compile Include="Common\ReadFile.cs" />
     <Compile Include="Common\SaveToFile.cs" />
     <Compile Include="ObjectToHtmlGenerator.cs" />

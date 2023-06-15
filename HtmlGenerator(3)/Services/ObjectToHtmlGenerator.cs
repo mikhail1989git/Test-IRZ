@@ -1,5 +1,7 @@
 ﻿using Domain;
 using Newtonsoft.Json;
+using Services.Common;
+using System;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,8 +44,7 @@ namespace Services
             foreach (var x in responseObject.items)
             {
                 stringBuilder.AppendLine("<tr>");
-
-                stringBuilder.AppendLine($"<td>{x.creation_date}</td>");
+                stringBuilder.AppendLine($"<td>{DateConverter.ConvertToDateTime(x.creation_date)}</td>");
                 stringBuilder.AppendLine($"<td>{x.title}</td>");
                 stringBuilder.AppendLine($"<td>{x.owner.display_name}</td>");
                 stringBuilder.AppendLine($"<td>{x.is_answered}</td>");

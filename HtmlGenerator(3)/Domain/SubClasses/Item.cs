@@ -14,10 +14,9 @@ namespace Domain.SubClasses
         public int view_count;
         public int answer_count;
         public int score;
-        public long xxx;
-        public long last_activity_date;
-        public long creation_date;
-        public long last_edit_date;
+        public int last_activity_date;
+        public int creation_date;
+        public int last_edit_date;
         public string question_id;
         public string content_license;
         public string link;
